@@ -1,3 +1,4 @@
+var capture = 0;
 setInterval(function () {
 	checkS();
 }, 1000);	
@@ -28,13 +29,10 @@ var flagCheck = function(){
 	$.ajax({
 		method: "POST",
 		url: "template/flagcheck.php",
-		data: {fg: fg, tm: tm1},
+		data: {fg: fg, tm: tm1,username:user},
 		success: function(status){
 			$('#flag-status-p').html(status);
-			$('#flag-check').val('');					
-			 if(status == "<p style='color:#d4ff00;'>Your key is Correct</p>"){
-			 	location.reload();
-			 }						
+			$('#flag-check').val('');											
 		}	
 	});
 };
@@ -118,7 +116,11 @@ var checkS = function(){
 						data: {update:"FLAG", team:tm1, username:user},
 						success: function(status){
 							if(status == "Success"){
-						  		$.notify("Flag Captured",{position:"bottom center", className:"success"});	
+								$.notify("Flag Captured",{position:"bottom center", className:"success"});
+								setTimeout(function(){
+		 							location.reload();
+		 						}, 3000);							
+						  			
 						  	}else{
 								  $.notify("Report Admin [ERROR 005]",{position:"bottom center", className:"error"});
 						    }	

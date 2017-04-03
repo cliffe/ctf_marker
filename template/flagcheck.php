@@ -1,8 +1,9 @@
 <?php
 
-if(isset($_POST['tm']) && isset($_POST['fg'])){
+if(isset($_POST['tm']) && isset($_POST['fg']) && isset($_POST['username'])){
      $flag = $_POST['fg'];
 	 $team = $_POST['tm'];
+	 $user = $_POST['username'];
 	
 	 include 'connection.php';	
 	 if(!empty($flag)){
@@ -59,7 +60,7 @@ if(isset($_POST['tm']) && isset($_POST['fg'])){
 										$final_grade = $flag_scoreboard_points + $finalPoints;
 										$update_points_sql = mysqli_query($connection,"UPDATE scoreboard SET SCORE='$final_grade' WHERE TEAM=$team");
 										if($update_points_sql){
-											$log_sql = mysqli_query($connection, "INSERT INTO logger (DATE, TEAM, LOG) VALUES ('$fdate','$team','[$vm] Captured the Flag - [$flag] - [POINTS : $finalPoints]')");
+											$log_sql = mysqli_query($connection, "INSERT INTO logger (DATE, TEAM, LOG) VALUES ('$fdate','$team','[$user][$vm] Captured the Flag - [$flag] - [POINTS : $finalPoints]')");
 											if($log_sql){								
 												$revealHint = mysqli_query($connection, "SELECT HINT_ID FROM hint WHERE TEAM='$team' AND SYSTEM_NAME='$vm' AND C_ID='$cid'");
 												$iN = 0;
