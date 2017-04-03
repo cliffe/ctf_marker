@@ -19,6 +19,6 @@ var x = setInterval(function() {
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("ttimer").innerHTML = "EXPIRED";
+        document.getElementById("ttimer").innerHTML = "GAME STARTED";
     }
 }, 1000);

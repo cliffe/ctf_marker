@@ -634,6 +634,7 @@ button {
     font-family: 'Iceland', cursive;
     height: 40px;
     line-height: 0px !important;
+    width: 100%;
 }
 button:hover {
     background-color: #33373d;
