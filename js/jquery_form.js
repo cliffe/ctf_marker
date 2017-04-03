@@ -19,8 +19,11 @@
 			$.ajax({
 				method: "POST",
 				url: "template/gethint.php",
-				data: {cid: coun_id, team: tm1, vm: system},
-				success: function(status){			
+				data: {cid: coun_id, team: tm1, vm: system,user:user},
+				success: function(status){		
+					if(checkSessionStorage() != "undefined"){
+						sessionStorage.setItem(coun_id+"-"+system,status);	
+					}	
 					$('#moBody').empty();
 					$('#moBodyLocked').empty();
 					var OCSplit = status.split("#~#");
@@ -79,3 +82,7 @@
 				}
 			});
 		});	
+		
+		function checkSessionStorage(){
+			return window.sessionStorage;
+		}
