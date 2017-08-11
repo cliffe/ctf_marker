@@ -313,7 +313,7 @@ if((mysqli_num_rows(mysqli_query($connection, "SHOW TABLES LIKE 'users'"))==0) |
 											<h3>
 												Time Set : <b style="color:green;">
 												<?php
-												$q1 = mysqli_query($connection, "SELECT value FROM options WHERE name='HOME_TIME'");
+												$q1 = mysqli_query($connection, "SELECT value FROM options WHERE name=HOME_TIME");
 												foreach(mysqli_fetch_assoc($q1) as $val){
 													echo $val;
 												}
@@ -364,13 +364,18 @@ if((mysqli_num_rows(mysqli_query($connection, "SHOW TABLES LIKE 'users'"))==0) |
 											<h3>
 												<?php
 												$q1 = mysqli_query($connection, "SELECT value FROM options WHERE name='LOGIN'");
-												foreach(mysqli_fetch_assoc($q1) as $val){
-													if($val == "ALLOW"){
-														echo "<b style='color:green;'>$val</b>";
-													}else{
-														echo "<b style='color:red;'>$val</b>";
+												if($q1) {
+													foreach(mysqli_fetch_assoc($q1) as $val){
+														if($val == "ALLOW"){
+															echo "<b style='color:green;'>$val</b>";
+														}else{
+															echo "<b style='color:red;'>$val</b>";
+														}
 													}
+												} else {
+													echo "<p>Something went wrong</p>";
 												}
+
 												
 												?>
 											</h3>
