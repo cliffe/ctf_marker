@@ -1,5 +1,27 @@
 # CTF Website
 
+# Using the makefile
+
+```
+make fresh-start
+```
+Fresh start will spawn the website + mysql. You can look at it on http://localhost:8080/
+
+
+When developing run:
+
+```
+make reload
+```
+
+This will stop, remove the old application, build the new one and make it run on port 8080
+
+```
+make clean
+```
+
+This will remove everything and clean up when you have finished.
+
 # Running in docker!!!! Its a new magical world
 
 docker build -t braderz/ctf-website .
